@@ -107,6 +107,7 @@
                 <div class="absolute inset-0 bg-gradient-to-r from-white via-white/20 to-transparent lg:via-transparent"></div>
             </div>
 
+            <!-- FORMULARIO FLOTANTE CON DROPDOWN FUNCIONAL -->
             <div id="formulario" class="relative z-20 w-full max-w-md px-4 py-10 lg:mr-12">
                 <div class="bg-white rounded-xl shadow-2xl p-6 border-t-4 border-bdir-blue">
                     
@@ -115,7 +116,7 @@
                             Sesión de Valoración Gratuita
                         </h3>
                         <p class="text-sm text-gray-600 text-center mb-6" data-i18n="form_subtitle">
-                            Te llamamos para ofrecerte una sesión de 30 minutos sin compromiso con nuestro fisioterapeuta.
+                            Te llamamos para ofrecerte una sesión de 30 minutos sin compromiso.
                         </p>
                         
                         <form onsubmit="submitForm(event)" class="space-y-4">
@@ -123,41 +124,41 @@
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_template" value="table">
 
-                            <!-- MÉTODO DE CONTACTO -->
+                            <!-- PASO 1: SELECTOR DE MÉTODO DE CONTACTO (SIEMPRE VISIBLE) -->
                             <div class="space-y-2">
                                 <label for="contact_method" class="block text-sm font-semibold text-gray-700" data-i18n="label_contact_method">
                                     ¿Cómo prefieres que te contactemos?
                                 </label>
                                 <select id="contact_method" name="metodo_contacto" required onchange="updateContactFields(this.value)" class="block w-full rounded-md border-gray-300 bg-gray-50 border px-4 py-3 text-gray-900 focus:border-bdir-blue focus:ring-bdir-blue focus:outline-none transition">
-                                    <option value="">-- Selecciona --</option>
+                                    <option value="">-- Selecciona una opción --</option>
                                     <option value="Telefono" data-i18n="option_phone">Teléfono</option>
                                     <option value="WhatsApp" data-i18n="option_whatsapp">WhatsApp</option>
                                     <option value="Email" data-i18n="option_email">Email</option>
                                 </select>
                             </div>
 
-                            <!-- NOMBRE -->
+                            <!-- PASO 2: NOMBRE (APARECE CUANDO SELECCIONA CUALQUIER OPCIÓN) -->
                             <div id="fieldNombre" class="hidden">
                                 <label for="nombre" class="block text-sm font-semibold text-gray-700">Nombre</label>
                                 <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" 
                                        class="block w-full rounded-md border-gray-300 bg-gray-50 border px-4 py-3 text-gray-900 focus:border-bdir-blue focus:ring-bdir-blue focus:outline-none transition">
                             </div>
 
-                            <!-- TELÉFONO -->
+                            <!-- PASO 3A: TELÉFONO (SI ELIGE TELÉFONO O WHATSAPP) -->
                             <div id="fieldTelefono" class="hidden">
                                 <label for="telefono" class="block text-sm font-semibold text-gray-700">Teléfono Móvil</label>
                                 <input type="tel" id="telefono" name="telefono" placeholder="Ej: 93 123 45 67" 
                                        class="block w-full rounded-md border-gray-300 bg-gray-50 border px-4 py-3 text-gray-900 focus:border-bdir-blue focus:ring-bdir-blue focus:outline-none transition">
                             </div>
 
-                            <!-- EMAIL -->
+                            <!-- PASO 3B: EMAIL (SI ELIGE EMAIL) -->
                             <div id="fieldEmail" class="hidden">
                                 <label for="email" class="block text-sm font-semibold text-gray-700">Correo Electrónico</label>
                                 <input type="email" id="email" name="email" placeholder="tu@email.com" 
                                        class="block w-full rounded-md border-gray-300 bg-gray-50 border px-4 py-3 text-gray-900 focus:border-bdir-blue focus:ring-bdir-blue focus:outline-none transition">
                             </div>
 
-                            <!-- TÉRMINOS -->
+                            <!-- CASILLA TÉRMINOS (SIEMPRE VISIBLE) -->
                             <div class="flex items-start pt-2">
                                 <div class="flex items-center h-5">
                                     <input id="terms" name="terms_accepted" type="checkbox" required class="focus:ring-bdir-blue h-4 w-4 text-bdir-blue border-gray-300 rounded">
@@ -173,7 +174,8 @@
                                 </div>
                             </div>
 
-                            <button id="submit-btn" type="submit" class="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-bold text-white bg-bdir-blue hover-bg-bdir-dark transition-colors">
+                            <!-- BOTÓN ENVÍO -->
+                            <button id="submit-btn" type="submit" class="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-bold text-white bg-bdir-blue hover:bg-[#007bb0] transition-colors">
                                 <span data-i18n="form_button">QUIERO MI SESIÓN DE VALORACIÓN GRATUITA >></span>
                             </button>
                             <p class="text-xs text-center text-gray-400 mt-2" data-i18n="form_privacy">
@@ -182,7 +184,7 @@
                         </form>
                     </div>
 
-                    <!-- ÉXITO -->
+                    <!-- VISTA DE ÉXITO -->
                     <div id="success-view" class="hidden text-center py-10">
                         <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 mb-4">
                             <i data-lucide="check-circle" class="h-8 w-8 text-green-600"></i>
@@ -215,7 +217,7 @@
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3 font-title" data-i18n="benefit_1_title">Terapia Manual y Ejercicio</h3>
                     <p class="text-gray-600 leading-relaxed" data-i18n="benefit_1_desc">
-                        Tratamientos personalizados combinando técnicas manuales con ejercicio terapéutico.
+                        Tratamientos personalizados combinando técnicas manuales con ejercicio terapéutico para una recuperación duradera.
                     </p>
                 </div>
 
@@ -225,7 +227,7 @@
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3 font-title" data-i18n="benefit_2_title">Readaptación de Lesiones</h3>
                     <p class="text-gray-600 leading-relaxed" data-i18n="benefit_2_desc">
-                        Programas específicos post-quirúrgicos o por lesiones deportivas.
+                        Programas específicos post-quirúrgicos o por lesiones deportivas. Volverás a tu actividad con la máxima seguridad.
                     </p>
                 </div>
 
@@ -235,7 +237,7 @@
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3 font-title" data-i18n="benefit_3_title">Fisioterapia Preventiva</h3>
                     <p class="text-gray-600 leading-relaxed" data-i18n="benefit_3_desc">
-                        Prevención de lesiones y mejora de la postura.
+                        Prevención de lesiones y mejora de la ergonomía postural. Invertir en salud es la mejor manera de evitar el dolor futuro.
                     </p>
                 </div>
             </div>
@@ -262,7 +264,7 @@
                         <i data-lucide="star" class="h-6 w-6 text-yellow-400 fill-current"></i>
                     </div>
                     <blockquote class="text-xl text-gray-800 font-medium mb-6" data-i18n="testimonial_quote">
-                        "Después de meses con dolor de espalda, con solo 5 sesiones volví a entrenar."
+                        "Después de meses con dolor de espalda, con solo 5 sesiones he vuelto a entrenar sin molestias. ¡La diferencia es increíble!"
                     </blockquote>
                     <div class="flex items-center justify-center space-x-4">
                         <div class="h-12 w-12 rounded-full bg-gray-300 flex items-center justify-center text-gray-500 font-bold">
@@ -289,7 +291,7 @@
                 ¿Cansado de que el dolor limite tu vida diaria?
             </h2>
             <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto" data-i18n="cta_final_desc">
-                Empieza hoy tu camino hacia una vida sin molestias.
+                Empieza hoy tu camino hacia una vida sin molestias. Nuestros expertos te guiarán paso a paso.
             </p>
             <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="inline-block bg-white py-4 px-10 border border-transparent rounded-md shadow-lg text-lg font-bold text-bdir-blue hover:bg-gray-50 transition-colors">
                 QUIERO MI SESIÓN DE VALORACIÓN GRATUITA
@@ -307,35 +309,37 @@
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 text-gray-300 text-sm">
-                    <a href="https://www.google.com/maps" target="_blank" class="flex items-center space-x-2 hover:text-bdir-blue transition-colors group">
-                        <i data-lucide="map-pin" class="h-5 w-5 text-bdir-blue"></i>
-                        <span>Av. Pedrablanca S/N Local 7</span>
+                    <a href="https://www.google.com/maps/search/?api=1&query=BDiR+Maresme" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 hover:text-bdir-blue transition-colors group cursor-pointer">
+                        <i data-lucide="map-pin" class="h-5 w-5 text-bdir-blue group-hover:scale-110 transition-transform"></i>
+                        <span class="font-medium">Av. Pedrablanca S/N Local 7</span>
                     </a>
                     <div class="flex items-center space-x-2">
                         <i data-lucide="phone" class="h-5 w-5 text-bdir-blue"></i>
                         <span>93 754 87 47</span>
                     </div>
-                    <a id="whatsapp-link" href="https://wa.me/34682334580" target="_blank" class="flex items-center space-x-2 hover:text-bdir-blue transition-colors group">
-                        <i data-lucide="message-circle" class="h-5 w-5 text-bdir-blue"></i>
-                        <span>682 334 580</span>
+                    <a id="whatsapp-link" href="https://wa.me/34682334580?text=Quiero%20solicitar%20mi%20sesion%20de%20valoracion%20de%20fisioterapia%20gratuita" target="_blank" class="flex items-center space-x-2 hover:text-bdir-blue transition-colors group cursor-pointer">
+                        <i data-lucide="message-circle" class="h-5 w-5 text-bdir-blue group-hover:scale-110 transition-transform"></i>
+                        <span class="font-semibold">682 334 580</span>
                     </a>
                 </div>
             </div>
             
             <div class="mt-8 border-t border-gray-700 pt-8 md:flex md:items-center md:justify-between">
                 <div class="flex space-x-6 md:order-3 mt-4 md:mt-0 justify-center md:justify-end">
-                    <a href="https://www.facebook.com/bdirmaresme" target="_blank" class="text-gray-300 hover:text-bdir-blue transition-colors">
+                    <a href="https://www.facebook.com/bdirmaresme/?locale=es_ES" target="_blank" class="text-gray-500 hover:text-bdir-blue transition-colors">
+                        <span class="sr-only">Facebook</span>
                         <i data-lucide="facebook" class="h-6 w-6"></i>
                     </a>
-                    <a href="https://www.instagram.com/bdirmaresme" target="_blank" class="text-gray-300 hover:text-bdir-blue transition-colors">
+                    <a href="https://www.instagram.com/bdirmaresme/?hl=es" target="_blank" class="text-gray-500 hover:text-bdir-blue transition-colors">
+                        <span class="sr-only">Instagram</span>
                         <i data-lucide="instagram" class="h-6 w-6"></i>
                     </a>
                 </div>
 
                 <div class="flex space-x-6 md:order-2 justify-center mt-4 md:mt-0">
-                    <a href="#" onclick="openModal('privacy'); return false;" class="text-gray-300 hover:text-bdir-blue" data-i18n="footer_privacy">Política de Privacidad</a>
-                    <a href="#" onclick="openModal('cookies'); return false;" class="text-gray-300 hover:text-bdir-blue" data-i18n="footer_cookies">Política de Cookies</a>
-                    <a href="#" onclick="openModal('legal'); return false;" class="text-gray-300 hover:text-bdir-blue" data-i18n="footer_legal">Aviso Legal</a>
+                    <button type="button" onclick="openModal('privacy')" class="text-gray-400 hover:text-gray-300 transition-colors" data-i18n="footer_privacy">Política de Privacidad</button>
+                    <button type="button" onclick="openModal('legal')" class="text-gray-400 hover:text-gray-300 transition-colors" data-i18n="footer_legal">Aviso Legal</button>
+                    <button type="button" onclick="openModal('cookies')" class="text-gray-400 hover:text-gray-300 transition-colors" data-i18n="footer_cookies">Política de Cookies</button>
                 </div>
 
                 <p class="mt-8 text-base text-gray-500 md:mt-0 md:order-1 text-center md:text-left" data-i18n="footer_rights">
@@ -350,18 +354,20 @@
         <div class="bg-white rounded-xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto p-6 sm:p-8">
             <div class="flex justify-between items-start mb-4 border-b pb-3">
                 <h2 id="modalTitle" class="text-2xl font-bold text-gray-900">Título</h2>
-                <button onclick="closeModal()" class="text-gray-400 hover:text-gray-700">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-gray-700 transition duration-150">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
             </div>
             <div id="modalContent" class="text-sm text-gray-600 space-y-4"></div>
             <div class="flex justify-end pt-6">
-                <button onclick="closeModal()" class="py-2 px-4 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50">Cerrar</button>
+                <button onclick="closeModal()" class="py-2 px-4 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 transition duration-150" data-i18n="modal_close_btn">
+                    Cerrar
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT COMPLETO -->
     <script>
         const BDIR_HOME_URL = 'https://cmbdirmaresme-bot.github.io/landing-bdir-home/#';
         const emailDestino = "cm.bdirmaresme@gmail.com";
@@ -390,19 +396,19 @@
                 form_sending: "ENVIANDO...",
                 form_privacy: "Tu privacidad es importante. No compartiremos tus datos.",
                 success_title: "¡Solicitud Recibida!",
-                success_msg: "Nos pondremos en contacto contigo muy pronto para agendar tu sesión.",
+                success_msg: "Nos pondremos en contacto contigo muy pronto para agendar tu sesión de valoración.",
                 benefits_title_1: "Movimiento sin límites",
                 benefits_title_2: "3 pilares de nuestro tratamiento",
                 benefit_1_title: "Terapia Manual y Ejercicio",
-                benefit_1_desc: "Tratamientos personalizados combinando técnicas manuales con ejercicio terapéutico.",
+                benefit_1_desc: "Tratamientos personalizados combinando las técnicas manuales más efectivas con ejercicio terapéutico para una recuperación duradera.",
                 benefit_2_title: "Readaptación de Lesiones",
-                benefit_2_desc: "Programas específicos post-quirúrgicos o por lesiones deportivas.",
+                benefit_2_desc: "Programas específicos post-quirúrgicos o por lesiones deportivas. Volverás a tu actividad con la máxima seguridad.",
                 benefit_3_title: "Fisioterapia Preventiva",
-                benefit_3_desc: "Prevención de lesiones y mejora de la postura.",
+                benefit_3_desc: "Prevención de lesiones y mejora de la ergonomía postural. Invertir en salud es la mejor manera de evitar el dolor futuro.",
                 social_proof_intro: "\"El centro definitivo para tu bienestar y recuperación en el Maresme.\"",
-                testimonial_quote: "\"Después de meses con dolor de espalda, con solo 5 sesiones volví a entrenar.\"",
+                testimonial_quote: "\"Después de meses con dolor de espalda, con solo 5 sesiones he vuelto a entrenar sin molestias. ¡La diferencia es increíble!\"",
                 cta_final_title: "¿Cansado de que el dolor limite tu vida diaria?",
-                cta_final_desc: "Empieza hoy tu camino hacia una vida sin molestias.",
+                cta_final_desc: "Empieza hoy tu camino hacia una vida sin molestias. Nuestros expertos te guiarán paso a paso.",
                 footer_privacy: "Política de Privacidad",
                 footer_cookies: "Política de Cookies",
                 footer_legal: "Aviso Legal",
@@ -413,7 +419,8 @@
                 modal_title_cookies: "Política de Cookies",
                 legal_content: "<p>Contenido del aviso legal de BDiR Maresme Fisioterapia.</p>",
                 privacy_content: "<p>Política de privacidad de BDiR Maresme.</p>",
-                cookies_content: "<p>Política de cookies de BDiR Maresme.</p>"
+                cookies_content: "<p>Política de cookies de BDiR Maresme.</p>",
+                modal_close_btn: "Cerrar"
             },
             ca: {
                 hero_title_1: "Recupera el teu moviment.",
@@ -434,19 +441,19 @@
                 form_sending: "ENVIANT...",
                 form_privacy: "La teva privacitat és important. No compartirem les teves dades.",
                 success_title: "Sol·licitud Rebuda!",
-                success_msg: "Ens posarem en contacte amb tu ben aviat per agendar la teva sessió.",
+                success_msg: "Ens posarem en contacte amb tu ben aviat per agendar la teva sessió de valoració de fisioteràpia.",
                 benefits_title_1: "Moviment sense límits",
                 benefits_title_2: "3 pilars del nostre tractament",
                 benefit_1_title: "Teràpia Manual i Exercici",
-                benefit_1_desc: "Tractaments personalitzats combinant tècniques manuals amb exercici terapèutic.",
+                benefit_1_desc: "Tractaments personalitzats combinant les tècniques manuals més efectives amb exercici terapèutic per a una recuperació duradora.",
                 benefit_2_title: "Readaptació de Lesions",
-                benefit_2_desc: "Programes específics post-quirúrgics o per lesions esportives.",
+                benefit_2_desc: "Programes específics post-quirúrgics o per lesions esportives. Tornaràs a la teva activitat amb la màxima seguretat.",
                 benefit_3_title: "Fisioteràpia Preventiva",
-                benefit_3_desc: "Prevenció de lesions i millora de la postura.",
+                benefit_3_desc: "Prevenció de lesions i millora de l'ergonomia postural. Invertir en salut és la millor manera d'evitar el dolor futur.",
                 social_proof_intro: "\"El centre definitiu per al teu benestar i recuperació al Maresme.\"",
-                testimonial_quote: "\"Després de mesos amb dolor d'esquena, amb només 5 sessions vaig tornar a entrenar.\"",
+                testimonial_quote: "\"Després de mesos amb dolor d'esquena, amb només 5 sessions he tornat a entrenar sense molèsties. La diferència és increïble!\"",
                 cta_final_title: "Cansat que el dolor limiti la teva vida diària?",
-                cta_final_desc: "Comença avui el teu camí cap a una vida sense molèsties.",
+                cta_final_desc: "Comença avui el teu camí cap a una vida sense molèsties. Els nostres experts et guiaran pas a pas.",
                 footer_privacy: "Política de Privacitat",
                 footer_cookies: "Política de Cookies",
                 footer_legal: "Avís Legal",
@@ -457,7 +464,8 @@
                 modal_title_cookies: "Política de Cookies",
                 legal_content: "<p>Contingut de l'avís legal de BDiR Maresme Fisioteràpia.</p>",
                 privacy_content: "<p>Política de privacitat de BDiR Maresme.</p>",
-                cookies_content: "<p>Política de cookies de BDiR Maresme.</p>"
+                cookies_content: "<p>Política de cookies de BDiR Maresme.</p>",
+                modal_close_btn: "Tancar"
             }
         };
 
@@ -486,20 +494,30 @@
         }
 
         function updateContactFields(method) {
-            const fields = {
-                'Telefono': ['fieldNombre', 'fieldTelefono'],
-                'WhatsApp': ['fieldNombre', 'fieldTelefono'],
-                'Email': ['fieldNombre', 'fieldEmail']
-            };
+            const fieldNombre = document.getElementById('fieldNombre');
+            const fieldTelefono = document.getElementById('fieldTelefono');
+            const fieldEmail = document.getElementById('fieldEmail');
 
-            document.getElementById('fieldNombre').classList.add('hidden');
-            document.getElementById('fieldTelefono').classList.add('hidden');
-            document.getElementById('fieldEmail').classList.add('hidden');
+            const inputNombre = document.getElementById('nombre');
+            const inputTelefono = document.getElementById('telefono');
+            const inputEmail = document.getElementById('email');
 
-            if (fields[method]) {
-                fields[method].forEach(id => {
-                    document.getElementById(id).classList.remove('hidden');
-                });
+            // 1. Ocultar todo
+            fieldNombre.classList.add('hidden');
+            fieldTelefono.classList.add('hidden');
+            fieldEmail.classList.add('hidden');
+
+            // 2. Mostrar según el método elegido
+            if (method === 'Telefono' || method === 'WhatsApp') {
+                fieldNombre.classList.remove('hidden');
+                inputNombre.focus();
+                
+                fieldTelefono.classList.remove('hidden');
+            } else if (method === 'Email') {
+                fieldNombre.classList.remove('hidden');
+                inputNombre.focus();
+                
+                fieldEmail.classList.remove('hidden');
             }
         }
 
@@ -540,7 +558,7 @@
             const original = translations[lang].form_button;
 
             btn.disabled = true;
-            span.textContent = translations[lang].form_sending;
+            span.innerHTML = `<span class="spinner"></span> ${translations[lang].form_sending}`;
 
             const formData = new FormData(event.target);
             const data = Object.fromEntries(formData);
@@ -555,17 +573,26 @@
                 });
 
                 if (response.ok) {
-                    document.getElementById('form-view').classList.add('hidden');
-                    document.getElementById('success-view').classList.remove('hidden');
+                    const result = await response.json();
+                    if (result.success) {
+                        document.getElementById('form-view').classList.add('hidden');
+                        document.getElementById('success-view').classList.remove('hidden');
+                        document.getElementById('formulario').scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                        btn.disabled = false;
+                        span.innerHTML = original;
+                        alert('Error al enviar el formulario');
+                    }
                 } else {
                     btn.disabled = false;
-                    span.textContent = original;
-                    alert('Error al enviar');
+                    span.innerHTML = original;
+                    alert('Error de conexión');
                 }
             } catch (e) {
+                console.error('Error:', e);
                 btn.disabled = false;
-                span.textContent = original;
-                alert('Error de conexión');
+                span.innerHTML = original;
+                alert('Error de conexión. Inténtalo de nuevo.');
             }
         }
 
